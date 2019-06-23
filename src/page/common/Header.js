@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import history from '../framework/history';
+import history from '../../framework/history';
 
 class Header extends Component {
 	constructor(props) {
@@ -22,7 +22,7 @@ class Header extends Component {
 			<React.Fragment>
 				<div className="card text-center">
 					<div className="card-header">
-						<ul className="nav nav-tabs card-header-tabs">
+						{/* <ul className="nav nav-tabs card-header-tabs">
 							<li className="nav-item">
 								{ this.props.location && this.props.location.pathname === '/create' ?
 									<a id='create' className="nav-link active" href="#" onClick={this.tabChange}>Create</a>
@@ -38,10 +38,10 @@ class Header extends Component {
 								}
 								
 							</li>
-						</ul>
+						</ul> */}
 					</div>
 					<div className="card-body">
-						<h5 className="card-title">pathname = {this.props.location && this.props.location.pathname}</h5>
+						{/* <h5 className="card-title">pathname = {this.props.location && this.props.location.pathname}</h5> */}
 						{/* <p className="card-text">It is for me to study React , Redux, Saga etc.</p> */}
 					</div>
 				</div>
@@ -51,7 +51,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	location : state.router.location
+	// location : state.routing.location
 });
 
 export default connect(mapStateToProps)(Header);

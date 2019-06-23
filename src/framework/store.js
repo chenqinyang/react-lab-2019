@@ -1,6 +1,5 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
@@ -10,9 +9,8 @@ import appSaga from '../saga/app';
 import history from './history';
 import app from '../reducer';
 
-
 // Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history)
+// const middleware = routerMiddleware(history);
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -37,7 +35,7 @@ const composeEnhancers =
     }) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(middleware),
+  // applyMiddleware(middleware),
   applyMiddleware(sagaMiddleware)
   // other store enhancers if any
 );
@@ -49,8 +47,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, 
   combineReducers({
-    app,
-    router: routerReducer
+    app
   })
 );
 
