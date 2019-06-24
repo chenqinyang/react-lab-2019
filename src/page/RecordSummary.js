@@ -15,6 +15,8 @@ class RecordSummary extends Component {
 					{this.props.recordList.map( (rec, idx) => (
 						<p> {rec.name} , {rec.date}</p>
 					))}
+
+					<button onClick={ () => { this.props.history.push('/create') } }>XXX</button>
 				</ul>
 			</div>
 		);

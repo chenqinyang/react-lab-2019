@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert } from 'react-bootstrap';
 
 class AppLoader extends Component {
   constructor(props) {
@@ -21,7 +22,10 @@ class AppLoader extends Component {
 
     return (
       <React.Fragment>
-        <p>AppLoader.js , counter is : {this.state.loadCount} </p>
+        <Alert variant={'info'}>
+          AppLoader.js , counter is : {this.state.loadCount} 
+        </Alert>
+        <p>The url is : { this.props.location.pathname }</p>
       </React.Fragment>
     );
   }
