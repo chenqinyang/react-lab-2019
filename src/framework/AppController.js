@@ -1,4 +1,3 @@
-// @flow
 import React, { Component, Suspense } from 'react';
 import { Router, Route } from 'react-router';
 import { Link } from 'react-router-dom';

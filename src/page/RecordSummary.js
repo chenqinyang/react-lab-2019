@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 
 class RecordSummary extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 

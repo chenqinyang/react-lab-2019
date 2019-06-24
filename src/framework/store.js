@@ -1,4 +1,3 @@
-
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
@@ -6,7 +5,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session'; 
 
 import appSaga from '../saga/app';
-import history from './history';
 import app from '../reducer';
 
 // Build the middleware for intercepting and dispatching navigation actions

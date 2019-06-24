@@ -5,7 +5,7 @@ function* helloSaga(action) {
     console.log("++++Test: hello Saga is running. action is ", action);
 
     let st = 1;
-    st ++;
+    yield st ++;
     console.log ("++++Test: st = ", st);
     
  }
