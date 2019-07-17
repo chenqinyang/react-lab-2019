@@ -14,6 +14,7 @@ import Header from '../page/common/Header';
 const AppLoader = React.lazy(() => import('./AppLoader'));
 const CreateRecord = React.lazy(() => import('../page/CreateRecord'));
 const RecordSummary = React.lazy(() => import('../page/RecordSummary'));
+const HookTrier = React.lazy(() => import('../page/HookTrier'));
 
 // Intl
 addLocaleData([...en]);
@@ -47,9 +48,13 @@ class AppController extends Component {
             <li>
               <Link to="/summary">Summary</Link>
             </li>
+            <li>
+              <Link to="/hookTrier">Hook Trier</Link>
+            </li>
                 <Route path="/" component={AppLoader} />
                 <Route path="/create" component={CreateRecord}/>
-                <Route path="/summary" component={RecordSummary}/>  
+                <Route path="/summary" component={RecordSummary}/>
+                <Route path="/hookTrier" component={HookTrier}/>
               </Router>
             </Suspense>
           </Provider>

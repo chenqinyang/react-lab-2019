@@ -9,6 +9,7 @@ import {
 const AppLoader = React.lazy(() => import('./AppLoader'));
 const CreateRecord = React.lazy(() => import('../page/CreateRecord'));
 const RecordSummary = React.lazy(() => import('../page/RecordSummary'));
+const HookTrier = React.lazy(() => import('../page/HookTrier'));
 
 class AppRouter extends Component {
   // constructor(props) {
@@ -28,6 +29,10 @@ class AppRouter extends Component {
       {
         path: '/summary',
         component: RecordSummary
+      },
+      {
+        path: '/hookTrier',
+        component: HookTrier
       }
     ];
 
