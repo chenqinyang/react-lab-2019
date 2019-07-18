@@ -1,8 +1,13 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function HookTrier () {
 
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+    // setCount(count + 1);
+  });
 
   return (
     <div>
