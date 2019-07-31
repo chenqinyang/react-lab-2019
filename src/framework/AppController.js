@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
-
 import history from './history';
 import store from './store';
 import message_en from '../locale/message_en';
@@ -23,46 +22,40 @@ addLocaleData({
   parentLocale: 'en'
 });
 
-class AppController extends Component {
+export default function AppController() {
 
-  render() {
-    console.log("++++Test: store = ", store, store.getState());
+  const Loading = (
+    <div> Loading... </div>
+  );
 
-    const Loading = (
-      <div> Loading... </div>
-    );
-
-    return (
-      <div>
-        <IntlProvider locale='en' messages={message_en} >
-          <Provider store={store}>
-            <Header />
-            <Suspense fallback={Loading} >
-              <Router history={history}>
-              <li>
-              <Link to="/">Home</Link>
-            </li>
+  return (
+    <div>
+      <IntlProvider locale='en' messages={message_en} >
+        <Provider store={store}>
+          <Header />
+          <Suspense fallback={Loading} >
+            <Router history={history}>
             <li>
-              <Link to="/create">Create</Link>
-            </li>
-            <li>
-              <Link to="/summary">Summary</Link>
-            </li>
-            <li>
-              <Link to="/hookTrier">Hook Trier</Link>
-            </li>
-                <Route path="/" component={AppLoader} />
-                <Route path="/create" component={CreateRecord}/>
-                <Route path="/summary" component={RecordSummary}/>
-                <Route path="/hookTrier" component={HookTrier}/>
-              </Router>
-            </Suspense>
-          </Provider>
-        </IntlProvider>
-      </div>
-    );
-  }
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/create">Create</Link>
+          </li>
+          <li>
+            <Link to="/summary">Summary</Link>
+          </li>
+          <li>
+            <Link to="/hookTrier">Hook Trier</Link>
+          </li>
+              <Route path="/" component={AppLoader} />
+              <Route path="/create" component={CreateRecord}/>
+              <Route path="/summary" component={RecordSummary}/>
+              <Route path="/hookTrier" component={HookTrier}/>
+            </Router>
+          </Suspense>
+        </Provider>
+      </IntlProvider>
+    </div>
+  );
 }
-
-export default AppController;
 

@@ -29,34 +29,34 @@ const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose;
+  		// Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+  	}) : compose;
 
 const enhancer = composeEnhancers(
-  // applyMiddleware(middleware),
-  applyMiddleware(sagaMiddleware)
-  // other store enhancers if any
+	// applyMiddleware(middleware),
+	applyMiddleware(sagaMiddleware)
+	// other store enhancers if any
 );
 
 const persistConfig = {
-  key: 'react-lab',
-  storage,
+	key: 'react-lab',
+	storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, 
-  combineReducers({
-    app
-  })
+	combineReducers({
+		app
+	})
 );
 
 const store = createStore(
-    // combineReducers({
-    //     app,
-    //     router: routerReducer
-    // }),
-    persistedReducer,
-    enhancer
-    // autoRehydrate()
+	// combineReducers({
+	//     app,
+	//     router: routerReducer
+	// }),
+	persistedReducer,
+	enhancer
+	// autoRehydrate()
 );
 
 persistStore(store);
