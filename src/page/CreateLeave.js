@@ -10,13 +10,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(3, 2),
-		width: '60%',
-		align: 'center'
+			width: '90%'
+	},
+	textField: {
+		width: '200px'
 	},
 	margin: {
 		margin: theme.spacing(1),
@@ -48,38 +51,42 @@ function CreateLeave(props) {
 
 	return (
 		<React.Fragment>
-			{/* <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">
-          This is a sheet of paper.
-        </Typography>
-        <Typography component="p">
-          Paper can be used to build surface or other elements for your application.
-        </Typography>
-      </Paper> */}
+			
+			<Paper className={classes.root}>
+				<br/>
 
-			<TextField
-				id="standard-name"
-				label="Name"
-				className={classes.textField}
-				value={values.name}
-				onChange={handleChange('name')}
-				margin="normal"
-			/>
-			<br/>
-			<TextField
-				id="date"
-				label="Date"
-				type="date"
-				className={classes.textField}
-				onChange={handleChange('date')}
-				InputLabelProps={{
-					shrink: true,
-				}}
-			/>
-			<br/>
-			<Button variant="outlined" size="medium" color="primary" className={classes.margin} onClick={submitRecord}>
-				Submit
-			</Button>
+				<Grid container spacing={3}>
+					<Grid item xs={12} >
+						<TextField
+							id="standard-name"
+							label="Name"
+							className={classes.textField}
+							value={values.name}
+							onChange={handleChange('name')}
+							margin="normal"
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<TextField
+							id="date"
+							label="Date"
+							type="date"
+							className={classes.textField}
+							onChange={handleChange('date')}
+							InputLabelProps={{
+								shrink: true,
+							}}
+						/>
+					</Grid>
+					<br/>
+					<Grid item xs={12} >
+						<Button variant="outlined" size="medium" color="primary" className={classes.margin} onClick={submitRecord}>
+							Submit
+						</Button>
+					</Grid>
+				</Grid>
+				
+			</Paper>
 		</React.Fragment>
 	);
 }
