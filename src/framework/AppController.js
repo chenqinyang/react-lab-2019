@@ -7,6 +7,11 @@ import en from 'react-intl/locale-data/en';
 import history from './history';
 import store from './store';
 import message_en from '../locale/message_en';
+
+//UI
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // import AppRouter from './AppRouter';
 import Header from '../page/common/Header';
 
@@ -22,18 +27,35 @@ addLocaleData({
   parentLocale: 'en'
 });
 
+const useStyles = makeStyles(theme => ({
+  progress: {
+    margin: theme.spacing(2),
+  },
+}));
+
 export default function AppController() {
 
-  const Loading = (
-    <div> Loading... </div>
+  const classes = useStyles();
+
+  const SuspenseLoading = (
+    <CircularProgress className={classes.progress} />
   );
+
+  function ActionLoading() {
+    return (
+      <React.Fragment>
+        <CircularProgress className={classes.progress} color="secondary" />
+      </React.Fragment>
+    );
+  }
 
   return (
     <div>
       <IntlProvider locale='en' messages={message_en} >
         <Provider store={store}>
           <Header />
-          <Suspense fallback={Loading} >
+          {/* <ActionLoading /> */}
+          <Suspense fallback={SuspenseLoading} >
             <Router history={history}>
               <Route path="/" component={AppLoader} />
               <Route path="/create" component={CreateLeave}/>

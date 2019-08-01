@@ -45,6 +45,17 @@ export default function CreateLeave() {
 				onChange={handleChange('name')}
 				margin="normal"
 			/>
+			<br/>
+			<TextField
+				id="date"
+				label="Date"
+				type="date"
+				className={classes.textField}
+				InputLabelProps={{
+					shrink: true,
+				}}
+			/>
+			<br/>
 			<Button variant="outlined" size="medium" color="primary" className={classes.margin} onClick={submitRecord}>
 				Submit
 			</Button>
