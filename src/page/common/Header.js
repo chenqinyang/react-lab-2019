@@ -94,6 +94,7 @@ export default function Header() {
 	}
 
 	function menuClick(item) {
+		handleDrawerClose();
 		history.push('/' + item);
 	}
 

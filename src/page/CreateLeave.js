@@ -5,11 +5,19 @@ import { connect } from 'react-redux';
 import history from '../framework/history';
 import { addRecord } from '../action/function';
 
+// UI
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
+	root: {
+		padding: theme.spacing(3, 2),
+		width: '60%',
+		align: 'center'
+	},
 	margin: {
 		margin: theme.spacing(1),
 	},
@@ -20,14 +28,17 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function CreateLeave() {
+function CreateLeave(props) {
 	const classes = useStyles();
 
 	const [values, setValues] = React.useState({
-		name: ''
+		name: '',
+		date: ''
 	});
 
 	function submitRecord() {
+		console.log('++++Test: craete record', values);
+		props.addRecord(values);
 		history.push('/summary');
 	}
 
@@ -37,6 +48,15 @@ export default function CreateLeave() {
 
 	return (
 		<React.Fragment>
+			{/* <Paper className={classes.root}>
+        <Typography variant="h5" component="h3">
+          This is a sheet of paper.
+        </Typography>
+        <Typography component="p">
+          Paper can be used to build surface or other elements for your application.
+        </Typography>
+      </Paper> */}
+
 			<TextField
 				id="standard-name"
 				label="Name"
@@ -51,6 +71,7 @@ export default function CreateLeave() {
 				label="Date"
 				type="date"
 				className={classes.textField}
+				onChange={handleChange('date')}
 				InputLabelProps={{
 					shrink: true,
 				}}
@@ -62,3 +83,5 @@ export default function CreateLeave() {
 		</React.Fragment>
 	);
 }
+
+export default injectIntl (connect(null, {addRecord})(CreateLeave) );
