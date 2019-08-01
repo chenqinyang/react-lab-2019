@@ -17,8 +17,7 @@ import Header from '../page/common/Header';
 
 const AppLoader = React.lazy(() => import('./AppLoader'));
 const CreateLeave = React.lazy(() => import('../page/CreateLeave'));
-const RecordSummary = React.lazy(() => import('../page/RecordSummary'));
-const HookTrier = React.lazy(() => import('../page/HookTrier'));
+const LeaveSummary = React.lazy(() => import('../page/LeaveSummary'));
 
 // Intl
 addLocaleData([...en]);
@@ -59,8 +58,7 @@ export default function AppController() {
             <Router history={history}>
               <Route path="/" component={AppLoader} />
               <Route path="/create" component={CreateLeave}/>
-              <Route path="/summary" component={RecordSummary}/>
-              <Route path="/hookTrier" component={HookTrier}/>
+              <Route path="/summary" component={LeaveSummary}/>
             </Router>
           </Suspense>
         </Provider>

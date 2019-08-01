@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
+		'background-color': 'green'
 	},
 	appBarShift: {
 		width: `calc(100% - ${drawerWidth}px)`,
@@ -117,7 +118,7 @@ export default function Header() {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap>
-            Persistent drawer
+            Boring Leave
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -137,7 +138,7 @@ export default function Header() {
 				</div>
 				<Divider />
 				<List>
-					{['create', 'summary', 'hookTrier'].map((text, index) => (
+					{['create', 'summary'].map((text, index) => (
 						<ListItem button key={text} onClick={ (e) => menuClick(text) }>
 							<ListItemText primary={text} />
 						</ListItem>
