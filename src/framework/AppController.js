@@ -11,7 +11,7 @@ import message_en from '../locale/message_en';
 import Header from '../page/common/Header';
 
 const AppLoader = React.lazy(() => import('./AppLoader'));
-const CreateRecord = React.lazy(() => import('../page/CreateRecord'));
+const CreateLeave = React.lazy(() => import('../page/CreateLeave'));
 const RecordSummary = React.lazy(() => import('../page/RecordSummary'));
 const HookTrier = React.lazy(() => import('../page/HookTrier'));
 
@@ -35,20 +35,8 @@ export default function AppController() {
           <Header />
           <Suspense fallback={Loading} >
             <Router history={history}>
-            <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/create">Create</Link>
-          </li>
-          <li>
-            <Link to="/summary">Summary</Link>
-          </li>
-          <li>
-            <Link to="/hookTrier">Hook Trier</Link>
-          </li>
               <Route path="/" component={AppLoader} />
-              <Route path="/create" component={CreateRecord}/>
+              <Route path="/create" component={CreateLeave}/>
               <Route path="/summary" component={RecordSummary}/>
               <Route path="/hookTrier" component={HookTrier}/>
             </Router>
