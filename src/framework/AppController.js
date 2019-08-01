@@ -11,10 +11,10 @@ import message_en from '../locale/message_en';
 //UI
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
 
 // import AppRouter from './AppRouter';
 import Header from '../page/common/Header';
-
 const AppLoader = React.lazy(() => import('./AppLoader'));
 const CreateLeave = React.lazy(() => import('../page/CreateLeave'));
 const LeaveSummary = React.lazy(() => import('../page/LeaveSummary'));
@@ -55,11 +55,13 @@ export default function AppController() {
           <Header />
           {/* <ActionLoading /> */}
           <Suspense fallback={SuspenseLoading} >
-            <Router history={history}>
-              <Route path="/" component={AppLoader} />
-              <Route path="/create" component={CreateLeave}/>
-              <Route path="/summary" component={LeaveSummary}/>
-            </Router>
+            <Container maxWidth="sm">
+              <Router history={history}>
+                <Route path="/" component={AppLoader} />
+                <Route path="/create" component={CreateLeave}/>
+                <Route path="/summary" component={LeaveSummary}/>
+              </Router>
+            </Container>
           </Suspense>
         </Provider>
       </IntlProvider>
