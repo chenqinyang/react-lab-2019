@@ -3,8 +3,8 @@ import session from './session';
 import func from './function';
 
 const app = combineReducers({
-  session,
-  func
+	session,
+	func
 });
 
 export default app;

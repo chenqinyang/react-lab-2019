@@ -24,10 +24,6 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
-}
-
 function LeaveSummary (props) {
 
 	const classes = useStyles();

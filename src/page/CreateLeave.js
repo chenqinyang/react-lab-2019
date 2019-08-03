@@ -11,12 +11,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-			width: '90%'
+		width: '90%'
 	},
 	textField: {
 		width: '200px'
@@ -40,7 +38,6 @@ function CreateLeave(props) {
 	});
 
 	function submitRecord() {
-		console.log('++++Test: craete record', values);
 		props.addRecord(values);
 		history.push('/summary');
 	}
