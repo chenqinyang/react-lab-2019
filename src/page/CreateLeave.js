@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -25,6 +29,20 @@ const useStyles = makeStyles(theme => ({
 	extendedIcon: {
 		marginRight: theme.spacing(1),
 	},
+	error: {
+		backgroundColor: theme.palette.error.dark,
+	},
+	icon: {
+		fontSize: 20,
+	},
+	iconVariant: {
+		opacity: 0.9,
+		marginRight: theme.spacing(1),
+	},
+	message: {
+		display: 'flex',
+		alignItems: 'center',
+	}
 }));
 
 
@@ -37,9 +55,15 @@ function CreateLeave(props) {
 		date: ''
 	});
 
+	const [open, setOpen] = useState(false);
+
 	function submitRecord() {
-		props.addRecord(values);
-		history.push('/summary');
+		if (values.name === '' || values.date === '') {
+			setOpen(true);
+		} else {
+			props.addRecord(values);
+			history.push('/summary');
+		}
 	}
 
 	const handleChange = name => event => {
@@ -84,6 +108,34 @@ function CreateLeave(props) {
 				</Grid>
 				
 			</Paper>
+
+			<Snackbar
+				anchorOrigin={{
+					vertical: 'top',
+					horizontal: 'center',
+				}}
+				open={open}
+				autoHideDuration={30000}
+				onClose={() => setOpen(false)}
+			>
+				<SnackbarContent
+					onClose={() => setOpen(false)}
+					variant="warning"
+					className={classes.error}
+					message="Invalid input ya !"
+					action={[
+						<IconButton
+							key="close"
+							aria-label="close"
+							color="inherit"
+							className={classes.close}
+							onClick={() => setOpen(false)}
+						>
+							<CloseIcon />
+						</IconButton>,
+					]}
+				/>
+			</Snackbar>
 		</React.Fragment>
 	);
 }
